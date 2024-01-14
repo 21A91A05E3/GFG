@@ -11,13 +11,18 @@ public:
 vector<int> repeatedRows(vector<vector<int>> matrix, int r, int c) 
 { 
     vector<int>res;
-    map<string,int>mp;
+    map<int,int>mp;
+    long long m=1e9+7;
     for(int i=0;i<r;i++)
     {
-        string s="";
+        long long s=0;
         for(int j=0;j<c;j++)
         {
-            s+=matrix[i][j];
+            if(matrix[i][j])
+            {
+                s+=(1<<j);
+                s=s%m;
+            }
         }
         if(mp.find(s)==mp.end())
         {
@@ -31,6 +36,7 @@ vector<int> repeatedRows(vector<vector<int>> matrix, int r, int c)
     return res;
 } 
 };
+
 
 
 
