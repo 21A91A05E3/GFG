@@ -10,28 +10,25 @@ using namespace std;
 class Solution{
 public:
     int ans=0;
-    void fun(int i,int m,int n,vector<int>&v){
-        if(v.size()==n){
+    void fun(int i,int m,int n,int c){
+        if(c==n){
             ans++;
             return;
         }
         for(int j=i*2;j<=m;j++)
         {
-            v.push_back(j);
-            fun(j,m,n,v);
-            v.pop_back();
+           
+            c++;
+            fun(j,m,n,c);
+            c--;
         }
-       
     }
     int numberSequence(int m, int n){
         // code here
         if(m<n)return 0;
-        vector<int>v;
         for(int i=1;i<=m/n;i++)
         {
-            v.push_back(i);
-            fun(i,m,n,v);
-            v.pop_back();
+            fun(i,m,n,1);
         }
         return ans;
     }
