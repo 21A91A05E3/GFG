@@ -1,0 +1,45 @@
+
+907. Sum of Subarray Minimums
+
+Question: https://leetcode.com/problems/sum-of-subarray-minimums/description/?envType=daily-question&envId=2024-01-20
+
+class Solution {
+public:
+    int sumSubarrayMins(vector<int>& arr) {
+        int n=arr.size(),c;
+        stack<pair<int,int>>st,st1;
+        vector<int>l,r;
+        for(int i=0;i<n;i++)
+        {
+            c=1;
+            while(!st.empty() && st.top().first>arr[i])
+            {
+                c+=st.top().second;
+                st.pop();
+            }
+            st.push({arr[i],c});
+            l.push_back(c);
+        }
+        //st1.push({arr[n-1],1});
+        for(int i=n-1;i>=0;i--)
+        {
+            c=1;
+            while(!st1.empty() && st1.top().first>=arr[i])
+            {
+                c+=st1.top().second;
+                st1.pop();
+            }
+            st1.push({arr[i],c});
+            r.push_back(c);
+        }
+        long long int ans=0,mod=1e9+7;
+        for(int i=0;i<n;i++)
+        {
+            ans+=(l[i]%mod*r[n-i-1]%mod*arr[i]%mod)%mod;
+            
+        }
+        return ans%mod;
+
+
+    }
+};
