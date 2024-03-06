@@ -11,7 +11,6 @@ class Solution
         {
             //code here.
             int m = pattern.size(), n = text.size();
-       
             vector<int> res;
       
             for (int i = 0; i <= n-m; i++)
