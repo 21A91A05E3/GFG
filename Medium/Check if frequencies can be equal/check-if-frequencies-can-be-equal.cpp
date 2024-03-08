@@ -19,7 +19,7 @@ public:
 	        if(it) mp[it]++;
 	        if(mp.size() > 2) return false;
 	    }
-	  // for(auto it:mp)cout<<it.first<<" ---> "<<it.second<<" ";
+
 	   if(mp.size() == 1)return true;
 	   else{
 	       int me = 0 , se = 1000001;
@@ -28,12 +28,12 @@ public:
 	            me = max(me,it.first);
 	            se = min(se, it.first);
 	       }
-	  // cout<<me<<" "<<se<<" ";
+
 	       if(mp[me]==1 and me-se == 1)return true;
 	       else if(mp[se] == 1 and se == 1)return true;
 	       
 	   }
-	  // cout<<"hi";
+	  
 	   return false;
 	    
 	  
