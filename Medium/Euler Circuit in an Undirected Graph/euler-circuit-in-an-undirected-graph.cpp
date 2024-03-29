@@ -7,14 +7,14 @@ class Solution {
 public:
 	bool isEularCircuitExist(int v, vector<int>adj[]){
 	    // Code here
-	    vector<int>indeg(v,0);
+	    vector<int>indeg1(v,0);
 	    for(int  i = 0 ; i < v ; i++)
 	    {
-	       for(auto it:adj[i]) indeg[it]++;
+	       for(auto it:adj[i]) indeg1[it]++;
 	    }
 	    for(int  i = 0 ; i < v ; i++)
 	    {
-	        if(indeg[i]%2)return false;
+	        if(indeg1[i]%2)return false;
 	    }
 	  
 	    return true;
