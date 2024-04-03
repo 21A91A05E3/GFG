@@ -99,7 +99,6 @@ class Solution
 {
     public:
     
-    /*You are required to complete below function */
     int kthCommonAncestor(Node *root, int k,int x, int y)
     {
         vector<int>v;
