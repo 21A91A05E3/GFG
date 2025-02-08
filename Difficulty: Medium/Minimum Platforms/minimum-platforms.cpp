@@ -10,32 +10,35 @@ class Solution {
     // railway station such that no train waits.
     int findPlatform(vector<int>& arr, vector<int>& dep) {
         // Your code here
-        
         vector<pair<int,int>>time;
-        for(int i = 0 ; i < arr.size() ; i++){
-            
+        int n = arr.size();
+        for(int i = 0 ; i < n ; i++){
             time.push_back({arr[i],dep[i]});
         }
         sort(time.begin(),time.end());
         
-        priority_queue<int,vector<int>,greater<int>>minHeap;
+        priority_queue<int, vector<int> , greater<int>>pq;
+        
+        pq.push(time[0].second);
         
         int platformCnt = 1;
         
-        minHeap.push(time[0].second);
-        
-        for(int i = 1 ; i < time.size() ; i++){
+        for(int i = 1 ; i < n ; i++){
             
-            if(time[i].first <= minHeap.top()){
+            int nxtarr = time[i].first;
+            
+            if(nxtarr <= pq.top()){
                 platformCnt++;
             }
             else{
-                minHeap.pop();
+                pq.pop();
             }
-             minHeap.push(time[i].second);
-            
+            pq.push(time[i].second);
         }
+        
         return platformCnt;
+        
+        
         
     }
 };
